@@ -1,7 +1,7 @@
 services:
   frontend: 
     build: 
-      context: ./movie-search-frontend
+      context: ./frontend
       args:
         - REACT_APP_API_URL=http://backend:3001
     ports:
@@ -14,7 +14,7 @@ services:
       - mynetwork
   backend:
     build: 
-      context: ./movie-search-backend
+      context: ./backend
     ports:
       - "3001:3001"
     command: npm run start
