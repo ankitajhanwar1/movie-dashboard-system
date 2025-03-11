@@ -48,13 +48,15 @@ Once the application is up and running, you can use the app as follows:
 
 ### 3.1 To run the backend test cases
 ```bash
-cd movie-search-backend
+cd backend
+npm install
 npm run test
 ```
 
 ### 3.2 To run the frontend test cases
 ```bash
-cd movie-search-frontend
+cd frontend
+npm install
 npm run test
 ```
 
