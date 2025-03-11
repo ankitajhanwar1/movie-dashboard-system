@@ -1,0 +1,6 @@
+[submodule "backend"]
+	path = backend
+	url = https://github.com/ankitajhanwar1/movie-search-backend.git
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/ankitajhanwar1/movie-search-frontend.git
