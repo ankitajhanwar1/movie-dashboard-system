@@ -1,0 +1,48 @@
+services:
+  frontend: 
+    build: 
+      context: ./movie-search-frontend
+      args:
+        - REACT_APP_API_URL=http://backend:3001
+    ports:
+      - "3000:3000"
+    command: npm run start
+    
+    depends_on:
+        - backend
+    networks:
+      - mynetwork
+  backend:
+    build: 
+      context: ./movie-search-backend
+    ports:
+      - "3001:3001"
+    command: npm run start
+    environment:
+      - PORT=3001
+      - CORS_ORIGIN=http://localhost:3000
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    networks:
+      - mynetwork
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.5.1
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
+    networks:
+      - mynetwork
+    healthcheck:
+      test: ["CMD-SHELL", "curl --silent --fail http://localhost:9200/_cluster/health || exit 1"]
+      interval: 10s
+      retries: 5
+      start_period: 20s
+      timeout: 5s
+networks:
+  mynetwork:
+    driver: bridge
