@@ -58,6 +58,7 @@ npm run test
 cd frontend
 npm install
 npm run test
+  Press 'a' to run all tests
 ```
 
 ## 4. Architecture Design Decisions
