@@ -15,8 +15,8 @@ Follow these steps to set up and run the project:
 
 1. **Clone the repository:**
     ```bash
-    git clone <repository_url>
-    cd moviesearch-system
+    git clone --recursive https://github.com/ankitajhanwar1/movie-dashboard-system.git
+    cd movie-dashboard-system
     ```
 
 2. **Navigate to the root directory of the project (where `docker-compose.yml` is located).**
