@@ -9,7 +9,8 @@ services:
     command: npm run start
     
     depends_on:
-        - backend
+      backend:
+        condition: service_healthy
     networks:
       - mynetwork
   backend:
@@ -27,6 +28,12 @@ services:
         condition: service_healthy
     networks:
       - mynetwork
+    healthcheck:
+      test: ["CMD", "curl", "--silent", "--fail", "http://localhost:3001/health"]
+      interval: 5s
+      retries: 5
+      start_period: 10s
+      timeout: 3s
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.5.1
     container_name: elasticsearch

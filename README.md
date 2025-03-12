@@ -20,8 +20,11 @@ Follow these steps to set up and run the project:
     ```
 
 2. **Navigate to the root directory of the project (where `docker-compose.yml` is located).**
+    ```bash
+    cd movie-dashboard-system
+    ```
 
-3. **Start the whole environment using Docker Compose:**
+3. **Start docker in your local in administrator mode. Start the whole environment using Docker Compose:**
     ```bash
     docker-compose up --build -d
     ```
